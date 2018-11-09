@@ -3,21 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Empresas</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar" animated="true"></ion-searchbar>
+  <br>
+  <hr>
+  <h3>{{cabeza}}</h3>
+  <ion-card *ngFor="let item of empresas">
+    <img src="{{host}}/logos/{{item.logo}}" (click)="InfoProductoPage(item.id)">
+    <ion-card-content>
+      <div (click)="InfoProductoPage(item.id)" class="tituloProducto">
+        <h1>{{item.nombre}}</h1>
       </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+      <br/>
+      <h4>Giro de la empresa: </h4>
+      <h3>Contacto: {{ item.nombre_contacto }}</h3>
+      <h4>Email: {{ item.email }}</h4>
+      <h4>Tel: {{ item.telefono }}</h4>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

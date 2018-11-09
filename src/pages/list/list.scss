@@ -1,3 +1,20 @@
 page-list {
+  img {
+    width: 60%;
+    margin: auto;
+  }
+
+  .tituloProducto {
+    text-align: center;
+  }
+
+  .buttonsearch {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  ion-item{
+    background: transparent !important;
+  }
 
 }

@@ -1,3 +1,4 @@
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,13 +17,18 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private iab: InAppBrowser
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Inicio', component: HomePage },
+      { title: 'Catalogo', component: ListPage }
     ];
 
   }
@@ -34,6 +40,11 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  openPagina(){
+    const browser = this.iab.create('https://docs.google.com/forms/d/1zKV620GGAj2IfwAtcdkH3k1QwldkKVzDoK2t8No78AA/edit', '_system');
+    browser.close();
   }
 
   openPage(page) {

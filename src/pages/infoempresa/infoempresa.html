@@ -1,0 +1,97 @@
+<!--
+  Generated template for the InfoempresaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Empresa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngFor="let empresa of producto">
+    <img src="{{host}}/logos/{{empresa.logo}}" alt="">
+    <h1>{{empresa.nombre}}</h1>
+    <ion-list>
+      <ion-item>
+        <h3><strong>Direccion en SLP:</strong></h3>
+        <h4>{{empresa.direccion}}</h4>
+      </ion-item>
+      <ion-item>
+        <h3><strong>Nombre de contacto:</strong></h3>
+        <h4>{{ empresa.nombre_contacto }}</h4>
+      </ion-item>
+      <ion-item class="link">
+        <h3><strong>Telefono:</strong></h3>
+        <h4 (click)="tel()">{{ empresa.telefono }}</h4>
+      </ion-item>
+      <ion-item>
+        <h3><strong>Correo electronico:</strong></h3>
+        <h4>{{ empresa.email }}</h4>
+      </ion-item>
+      <ion-item (click)="web()" class="link">
+        <h3>
+          <strong>Sitio web:</strong>
+        </h3>
+        <h4>{{ empresa.web }}</h4>
+      </ion-item>
+      <ion-item *ngIf="empresa.cantidad_unidades != null">
+        <h3>
+          <strong>Cantidad de unidades:</strong>
+        </h3>
+        <h4>{{ empresa.cantidad_unidades }}</h4>
+      </ion-item>
+      <ion-item  *ngIf="empresa.antiguedad_unidades != null">
+        <h3>
+          <strong>Antigüedad promedio de las unidades:</strong>
+        </h3>
+        <h4>{{ empresa.antiguedad_unidades }}</h4>
+      </ion-item>
+      <ion-item>
+        <h3>
+          <strong>Programa IMMEX de servicio:</strong>
+        </h3>
+        <h4 *ngIf="empresa.programa_immex == 0" >No</h4>
+        <h4 *ngIf="empresa.programa_immex == 1" >Si</h4>
+      </ion-item>
+      <ion-item>
+        <h3>
+          <strong>Maneja materiales peligrosos:</strong>
+        </h3>
+        <h4 *ngIf="empresa.material_peligros == 0" >No</h4>
+        <h4 *ngIf="empresa.material_peligros == 1" >Si</h4>
+      </ion-item>
+      <ion-item *ngIf="empresa.servicios_adicionales != null">
+        <h3>
+          <strong>Servicios adicionales:</strong>
+        </h3>
+        <h4>{{ empresa.servicios_adicionales }}</h4>
+      </ion-item>
+      <ion-item>
+        <h3>
+          <strong>Rastreo satelital:</strong>
+        </h3>
+        <h4 *ngIf="empresa.rastreo_satelital == 0">No</h4>
+        <h4 *ngIf="empresa.rastreo_satelital == 1">Si</h4>
+      </ion-item>
+      <ion-item>
+        <h3>
+          <strong>Recursos Humanos:</strong>
+        </h3>
+        <h4 *ngIf="empresa.recurso_humano == 0">No</h4>
+        <h4 *ngIf="empresa.recurso_humano == 1">Si</h4>
+      </ion-item>
+      <ion-item *ngIf="empresa.rutas_internacionales != null">
+        <h3>
+          <strong>Rutas internacionales:</strong>
+        </h3>
+        <h4>{{ empresa.rutas_internacionales }}</h4>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
